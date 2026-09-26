@@ -159,6 +159,7 @@ def main() -> None:
             (microbatch_loss / args.gradient_accumulation_steps).backward()
             train_loss += microbatch_loss.detach().item()
 
+        train_loss /= args.gradient_accumulation_steps
         grad_norm = gradient_clipping(model.parameters(), args.max_grad_norm)
         optimizer.step()
 

@@ -1,0 +1,46 @@
+=== Prompt: 'Once upon a time, there was a little girl named Lily.' | Setting: Low Temp (0.3) ===
+Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she saw a big, scary dog. The dog was barking and growling. Lily was scared and didn't know what to do.
+
+Suddenly, a man came and said, "Don't worry, I'll protect you." He took Lily's hand and they walked to the dog. The dog was very friendly and wagged his tail. Lily was happy to see the dog and said, "Thank you, Mr. Lion!"
+
+The man smiled and said, "You're welcome, little girl. Always be careful when you
+--------------------------------------------------
+=== Prompt: 'Once upon a time, there was a little girl named Lily.' | Setting: Balanced (0.7, top-p 0.9) ===
+Once upon a time, there was a little girl named Lily. She loved to play with her toys and her favorite toy was a teddy bear. One day, Lily's mom told her they were going to the park to play. Lily was so excited!
+
+At the park, Lily saw a big slide. She wanted to go down it, but she was scared. She started to cry because she wanted to go down the slide. But her mom said, "Don't worry, Lily. I will help you."
+
+Lily started to climb up the slide. She felt the wind in her hair and the sun on her face. She laughed and screamed
+--------------------------------------------------
+=== Prompt: 'Once upon a time, there was a little girl named Lily.' | Setting: Creative (1.0, top-p 0.95) ===
+Once upon a time, there was a little girl named Lily. She loved to play with her toys, especially her teddy bear. One day, she accidentally broke her teddy bear while playing. She started to cry.
+
+Her mom saw her crying and said, "Don't worry, we can fix the teddy bear together." Lily felt better and hugged her mom tightly.
+
+Later that day, Lily's mom suggested they go to the store to buy some cupcakes. Lily was very excited and couldn't wait for the store to come. When they got there, they saw a man with a big smile. The man had a broken stick in his hand.
+--------------------------------------------------
+=== Prompt: 'One day, Tom and Mia found a big box in the garden.' | Setting: Low Temp (0.3) ===
+One day, Tom and Mia found a big box in the garden. They wanted to see what was inside. They opened the box and saw many shiny things. They were very happy.
+
+But then, they heard a loud noise. It was a big dog. It was barking and running towards them. Tom and Mia were scared. They did not know what to do. They ran to the box and tried to open it. But the dog was too strong. It barked and growled. It bit Tom's hand. Tom screamed and dropped the box.
+
+Mia ran to Tom and tried to help him. But it was too late. Tom was gone.
+--------------------------------------------------
+=== Prompt: 'One day, Tom and Mia found a big box in the garden.' | Setting: Balanced (0.7, top-p 0.9) ===
+One day, Tom and Mia found a big box in the garden. It was full of shiny things. Tom wanted to play with the things, so he took a step closer. He was very careful not to break anything.
+
+Mia walked to the box and looked inside. She saw a shiny necklace, a big, shiny necklace. She wanted to wear it, but she remembered that she left it on the table. She picked it up and put it on her neck. It was a pretty necklace with a shiny jewel on it.
+
+Mia's mom saw the necklace and was very angry. She said, "That's a bad necklace! It's not
+--------------------------------------------------
+=== Prompt: 'One day, Tom and Mia found a big box in the garden.' | Setting: Creative (1.0, top-p 0.95) ===
+One day, Tom and Mia found a big box in the garden. It was full of new toys. They wanted to play with them.
+
+"Let me see!" Tom said.
+
+"No, I saw them first!" Mia said.
+
+They both wanted to have the toys, but they were both afraid. They were going to have fun with the toys. They did not think of anyone or anyone else.
+
+The other kids saw what happened and ran to each other. They showed the toys to each other. They took the toys away from the box and said, "These are my toys. They are mine. You do not have
+--------------------------------------------------
