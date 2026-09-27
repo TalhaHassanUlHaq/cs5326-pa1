@@ -118,15 +118,16 @@ class RotaryPositionalEmbedding(nn.Module):
     ) -> torch.Tensor:
         if x.shape[-1] != self.head_dim:
             raise ValueError(f"Expected final dimension {self.head_dim} (head_dim), got {x.shape[-1]}")
-        if torch.is_floating_point(token_positions):
+        if token_positions.dtype not in (torch.int64, torch.int32, torch.int16, torch.int8, torch.uint8):
             raise TypeError("token_positions must have integer dtype")
         if (token_positions < 0).any() or (token_positions >= self.context_length).any():
             raise ValueError("token_positions contains values outside [0, context_length)")
         if token_positions.shape[-1] != x.shape[-2]:
             raise ValueError(f"token_positions sequence length {token_positions.shape[-1]} does not match x sequence length {x.shape[-2]}")
 
-        cos = self.cos_cached[token_positions]  # [*token_positions.shape, head_dim // 2]
-        sin = self.sin_cached[token_positions]
+        pos_long = token_positions.to(torch.long)
+        cos = self.cos_cached[pos_long]  # [*token_positions.shape, head_dim // 2]
+        sin = self.sin_cached[pos_long]
         cos = torch.repeat_interleave(cos, 2, dim=-1)  # [*token_positions.shape, head_dim]
         sin = torch.repeat_interleave(sin, 2, dim=-1)
 
@@ -134,7 +135,7 @@ class RotaryPositionalEmbedding(nn.Module):
         pos_batch_dims = token_positions.ndim - 1
         new_shape = (
             *token_positions.shape[:-1],
-            *((1,) * (batch_dims - pos_batch_dims)),
+            *((1,) * max(0, batch_dims - pos_batch_dims)),
             token_positions.shape[-1],
             self.head_dim,
         )

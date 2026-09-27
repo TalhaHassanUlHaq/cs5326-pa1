@@ -204,14 +204,14 @@ class CausalGroupedQueryAttention(nn.Module):
         if token_positions is None:
             token_positions = torch.arange(sequence, device=x.device)
 
-        q = self.q_proj(x).view(batch, sequence, self.n_q_heads, self.head_dim).transpose(1, 2)
-        k = self.k_proj(x).view(batch, sequence, self.n_kv_heads, self.head_dim).transpose(1, 2)
-        v = self.v_proj(x).view(batch, sequence, self.n_kv_heads, self.head_dim).transpose(1, 2)
+        q = self.q_proj(x).reshape(batch, sequence, self.n_q_heads, self.head_dim).transpose(1, 2)
+        k = self.k_proj(x).reshape(batch, sequence, self.n_kv_heads, self.head_dim).transpose(1, 2)
+        v = self.v_proj(x).reshape(batch, sequence, self.n_kv_heads, self.head_dim).transpose(1, 2)
 
         q = self.rope(q, token_positions)
         k = self.rope(k, token_positions)
 
-        q = q.view(batch, self.n_kv_heads, self.group_size, sequence, self.head_dim)
+        q = q.reshape(batch, self.n_kv_heads, self.group_size, sequence, self.head_dim)
         scores = torch.einsum("bhgqd,bhkd->bhgqk", q, k) / math.sqrt(self.head_dim)
 
         causal_mask = torch.tril(torch.ones((sequence, sequence), dtype=torch.bool, device=x.device))

@@ -114,13 +114,14 @@ from __future__ import annotations
 import math
 from collections.abc import Iterable
 
+import numpy as np
 import torch
 from torch.optim import Optimizer
 
 
 def cross_entropy(logits: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
     lse = torch.logsumexp(logits, dim=-1)
-    target_logits = torch.gather(logits, -1, targets.unsqueeze(-1)).squeeze(-1)
+    target_logits = torch.gather(logits, -1, targets.to(torch.long).unsqueeze(-1)).squeeze(-1)
     loss = lse - target_logits
     return torch.mean(loss)
 
@@ -207,11 +208,15 @@ def get_lr_cosine_schedule(
     warmup_steps: int,
     cosine_steps: int,
 ) -> float:
-    if not isinstance(step, int) or step < 0:
+    if isinstance(step, bool) or not isinstance(step, (int, np.integer)) or step < 0:
         raise ValueError(f"Invalid step: {step}")
+    if isinstance(warmup_steps, bool) or not isinstance(warmup_steps, (int, np.integer)) or warmup_steps < 0:
+        raise ValueError(f"Invalid warmup_steps: {warmup_steps}")
+    if isinstance(cosine_steps, bool) or not isinstance(cosine_steps, (int, np.integer)) or cosine_steps <= 0:
+        raise ValueError(f"Invalid cosine_steps: {cosine_steps}")
     if not (0.0 <= learning_rate_min <= learning_rate_max):
         raise ValueError(f"Invalid learning rates: min {learning_rate_min}, max {learning_rate_max}")
-    if warmup_steps < 0 or warmup_steps >= cosine_steps:
+    if warmup_steps >= cosine_steps:
         raise ValueError(f"Invalid warmup / cosine steps: {warmup_steps}, {cosine_steps}")
 
     if step < warmup_steps:
