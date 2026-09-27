@@ -3,6 +3,7 @@
 **Course**: CS 5326: Advanced Generative AI and Agents  
 **Assignment**: Programming Assignment 1 — The Modern Transformer Language Model  
 **Author**: Talha Hassan Ul Haq  
+**Student ID**: 27100306  
 **Architecture**: 4-Layer Pre-Norm Transformer LM (19,272,192 Parameters)  
 **Dataset**: TinyStories (466.88M training tokens, 4.69M validation tokens)  
 **Final Standardized Validation Metric**: **1.6844 nats/token (Perplexity: 5.39)**  
